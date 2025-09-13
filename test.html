@@ -31,6 +31,34 @@
     <h4>
     Попытка 4!
   </h4>
+  <input type="button" id="btn" value="Download" />
+    <script>
+        function download(file, text) {
+
+            //creating an invisible element
+
+            let element = document.createElement('a');
+            element.setAttribute('href',
+                'data:text/plain;charset=utf-8, '
+                + encodeURIComponent(text));
+            element.setAttribute('download', file);
+            document.body.appendChild(element);
+            element.click();
+
+            document.body.removeChild(element);
+        }
+
+        // Start file download.
+
+        document.getElementById("btn")
+            .addEventListener("click", function () {
+                let text =
+                    document.getElementById("text").value;
+                let filename = "index.html";
+
+                download(filename, text);
+            }, false);
+    </script>
   <a href=file://templates/index.html> ТЫК </a>
     <h1>
     POC!
